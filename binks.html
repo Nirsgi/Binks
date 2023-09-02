@@ -2,8 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ビンクス語</title>
+<title>読めないメモ帳</title>
 <body>
+
+<button id="button1">正しい向きにする</button>
+<button id="button2">異常な向きにする</button>
 <textarea id="data"></textarea>
 </body>
 <style>
@@ -11,18 +14,33 @@ html{
 width:100%;
 }
 label,input,button{
-font-size:130px;
+font-size:60px;
 }
-textarea{
-font-size:50px;
+#data{
+font-size:80px;
 width:100%;
-height:1000px;
+height:1200px;
 letter-spacing:-0.1em;
 transform:scale(1, -1);
 }
 </style>
 </head>
 <script>
-  //צהנה
-  </script>
+const d = document.querySelector("textarea#data");
+var b1 = document.getElementById('button1')
+var b2 = document.getElementById('button2')
+b1.addEventListener('click',() => {d.style.transform = 'scale(1,1)'});
+b2.addEventListener('click',() => {d.style.transform = 'scale(1,-1)'});
+d.addEventListener('onChange',() => {
+var scr = '';
+scr = d.value;
+localStorage.setItem('txt',scr);
+});
+
+addEventListener('load',() => {
+var scr = localStorage.getItem('txt')
+d.value = scr;
+});
+//צהנה
+</script>
 </html>
